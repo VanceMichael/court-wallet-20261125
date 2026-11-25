@@ -1,0 +1,14 @@
+{
+  "name": "本地收单方",
+  "path": "/v1/disbursements",
+  "lookup": "/v1/disbursements/",
+  "id": "instructionId",
+  "group": "items",
+  "key": "Idempotency-Key",
+  "modes": [
+    "accepted",
+    "rejected",
+    "accepted_disconnect",
+    "pending"
+  ]
+}

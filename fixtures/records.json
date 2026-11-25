@@ -1,0 +1,146 @@
+{
+  "merchants": [
+    {
+      "id": "M-A",
+      "name": "南岸商行"
+    },
+    {
+      "id": "M-B",
+      "name": "南岸商行"
+    }
+  ],
+  "accounts": [
+    {
+      "id": "W-A",
+      "owner": "M-A",
+      "currency": "CNY"
+    },
+    {
+      "id": "W-AGENT",
+      "owner": "M-B",
+      "currency": "CNY"
+    }
+  ],
+  "relations": [
+    {
+      "id": "REL-1",
+      "account": "W-AGENT",
+      "merchant": "M-A",
+      "status": "unconfirmed",
+      "validFrom": "2026-11-01T00:00:00Z"
+    }
+  ],
+  "cases": [
+    {
+      "id": "C-1",
+      "merchant": "M-A",
+      "limitMinor": 90000,
+      "rank": 1,
+      "accounts": [
+        "W-A"
+      ]
+    },
+    {
+      "id": "C-2",
+      "merchant": "M-A",
+      "limitMinor": 60000,
+      "rank": 2,
+      "accounts": [
+        "W-A",
+        "W-AGENT"
+      ]
+    }
+  ],
+  "orders": [
+    {
+      "id": "O-1",
+      "merchant": "M-A",
+      "account": "W-A",
+      "paidMinor": 50000
+    },
+    {
+      "id": "O-2",
+      "merchant": "M-B",
+      "account": "W-AGENT",
+      "paidMinor": 70000
+    }
+  ],
+  "receipts": [
+    {
+      "id": "IN-1",
+      "order": "O-1",
+      "amountMinor": 50000,
+      "receivedAt": "2026-11-24T01:00:00Z"
+    }
+  ],
+  "refundRequests": [
+    {
+      "id": "RF-1",
+      "order": "O-1",
+      "amountMinor": 12000,
+      "confirmedAt": "2026-11-24T02:00:00Z"
+    }
+  ],
+  "actors": [
+    {
+      "id": "legal-a",
+      "role": "legal"
+    },
+    {
+      "id": "legal-b",
+      "role": "legal"
+    },
+    {
+      "id": "cashier",
+      "role": "payments"
+    },
+    {
+      "id": "support-a",
+      "role": "support",
+      "orders": [
+        "O-1"
+      ]
+    }
+  ],
+  "sourceChanges": [
+    {
+      "id": "DOC-A",
+      "case": "C-1",
+      "validFrom": "2026-11-24T03:00:00Z",
+      "author": "legal-a",
+      "accounts": [
+        "W-A"
+      ],
+      "limitMinor": 90000
+    },
+    {
+      "id": "DOC-B",
+      "case": "C-2",
+      "validFrom": "2026-11-24T04:00:00Z",
+      "author": "legal-b",
+      "accounts": [
+        "W-A",
+        "W-AGENT"
+      ],
+      "limitMinor": 60000
+    },
+    {
+      "id": "REL-CONFIRM",
+      "relation": "REL-1",
+      "reviewer": "legal-b",
+      "validFrom": "2026-11-25T00:00:00Z"
+    },
+    {
+      "id": "RELAX-A",
+      "case": "C-1",
+      "account": "W-A",
+      "releaseMinor": 18000
+    },
+    {
+      "id": "RF-LATE",
+      "order": "O-1",
+      "amountMinor": 15000,
+      "requestedAt": "2026-11-25T03:00:00Z"
+    }
+  ]
+}

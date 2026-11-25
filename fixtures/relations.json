@@ -1,0 +1,38 @@
+[
+  {
+    "table": "accounts",
+    "field": "owner",
+    "target": "merchants",
+    "nullable": false
+  },
+  {
+    "table": "cases",
+    "field": "merchant",
+    "target": "merchants",
+    "nullable": false
+  },
+  {
+    "table": "orders",
+    "field": "merchant",
+    "target": "merchants",
+    "nullable": false
+  },
+  {
+    "table": "orders",
+    "field": "account",
+    "target": "accounts",
+    "nullable": false
+  },
+  {
+    "table": "receipts",
+    "field": "order",
+    "target": "orders",
+    "nullable": false
+  },
+  {
+    "table": "refundRequests",
+    "field": "order",
+    "target": "orders",
+    "nullable": false
+  }
+]
